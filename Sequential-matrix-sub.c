@@ -13,3 +13,13 @@ void initializeMatrix(int matrix[ROWS][COLS]) {
         }
     }
 }
+
+// Function to subtract two matrices
+void subtractMatrices(int A[ROWS][COLS], int B[ROWS][COLS], int result[ROWS][COLS]) {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            result[i][j] = A[i][j] - B[i][j];
+        }
+    }
+}
+
