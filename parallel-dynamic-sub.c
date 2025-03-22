@@ -61,4 +61,19 @@ int main() {
                 printf("Run %d executed in %f seconds.\n", run + 1, run_times[run]);
             }
         }
+      // Calculate average time (sequential part)
+      for (int i = 0; i < RUNS; i++) {
+        total_time += run_times[i];
+    }
     
+    double average_time = total_time / RUNS;
+    printf("Average execution time over %d runs with %d threads (dynamic scheduling): %f seconds.\n", 
+           RUNS, num_threads, average_time);
+    
+    // Print scheduling information
+    printf("Matrix subtraction using dynamic scheduling with chunk size 16\n");
+    printf("Run execution using dynamic scheduling with chunk size 1\n");
+    
+    return 0;
+}
+  
