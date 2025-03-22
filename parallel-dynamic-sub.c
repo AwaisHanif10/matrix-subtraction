@@ -27,3 +27,21 @@ void subtractMatrices(int A[ROWS][COLS], int B[ROWS][COLS], int result[ROWS][COL
         }
     }
 }
+
+int main() {
+    int A[ROWS][COLS], B[ROWS][COLS], result[ROWS][COLS];
+    double start_time, end_time;
+    double run_times[RUNS];
+    
+    // Seed for random number generation
+    srand(time(0));
+    
+    // Initialize matrices
+    initializeMatrix(A);
+    initializeMatrix(B);
+    
+    // Set the number of threads
+    int num_threads = 4;  // You can change this value to experiment with different thread counts
+    omp_set_num_threads(num_threads);
+    
+    double total_time = 0.0;
