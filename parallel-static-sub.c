@@ -41,7 +41,7 @@ int main() {
     initializeMatrix(B);
     
     // Set the number of threads
-    int num_threads = 4;  // You can change this value to experiment with different thread counts
+    int num_threads = 2;  // You can change this value to experiment with different thread counts
     omp_set_num_threads(num_threads);
     
     double total_time = 0.0;
