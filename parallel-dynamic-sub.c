@@ -45,3 +45,20 @@ int main() {
     omp_set_num_threads(num_threads);
     
     double total_time = 0.0;
+
+        // Use a critical section to print results in order
+        #pragma omp parallel for private(start_time, end_time) shared(run_times, A, B, result) schedule(dynamic, 1)
+        for (int run = 0; run < RUNS; run++) {
+            start_time = omp_get_wtime(); // More accurate timing for parallel code
+            
+            subtractMatrices(A, B, result);
+            
+            end_time = omp_get_wtime();
+            run_times[run] = end_time - start_time;
+            
+            #pragma omp critical
+            {
+                printf("Run %d executed in %f seconds.\n", run + 1, run_times[run]);
+            }
+        }
+    
