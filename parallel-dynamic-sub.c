@@ -16,3 +16,14 @@ void initializeMatrix(int matrix[ROWS][COLS]) {
         }
     }
 }
+
+// Function to subtract two matrices using OpenMP parallelization with dynamic scheduling
+void subtractMatrices(int A[ROWS][COLS], int B[ROWS][COLS], int result[ROWS][COLS]) {
+    // Parallelizing the matrix subtraction using OpenMP with dynamic scheduling
+    #pragma omp parallel for collapse(2) schedule(dynamic, 16) shared(A, B, result) default(none)
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            result[i][j] = A[i][j] - B[i][j];
+        }
+    }
+}
